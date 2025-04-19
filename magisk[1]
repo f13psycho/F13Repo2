@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<HTML><HEAD>
+  <META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=UTF-8'/>
+  <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=1" />
+  <TITLE>IzzyOnDroid Magisk Repository</TITLE>
+  <BASE HREF='/magisk/index.php'>
+  <LINK REL='stylesheet' TYPE='text/css' HREF='templates/main.css' />
+  <LINK REL='stylesheet' TYPE='text/css' HREF='templates/dark.css' />
+  <LINK REL='icon' HREF='izzy-on-droid.png' TYPE='image/png' />
+  <LINK REL='shortcut icon' HREF='izzy-on-droid.png' TYPE='image/png' />
+  <META property="og:site_name" content="IzzyOnDroid App Repo" />
+  <META property="og:title" content="IzzyOnDroid Magisk Repository" />
+  <META property="og:determiner" content="" />
+  <META property="og:description" content="This is a repository of open-source Magisk modules run by IzzyOnDroid." />
+  <META property="og:image" content="/shared/images/magisk_logo.png" />
+  <META NAME='robots' CONTENT='index,nofollow'/>
+</HEAD><BODY>
+<h2>IzzyOnDroid Magisk Repository</h2>
+<div id='intro'>
+<p style='margin-bottom:.2em;'><span style='float:right;width:50px;margin-left:.5em;'>
+<img src='izzy-on-droid.png' alt='IzzyOnDroid repo' width='50'></span>This is a repository for open-source Magisk Modules which is run by by <i>IzzyOnDroid</i> (<a href='index/info' title='Information on this repository'>details</a>), currently serving <kbd>128</kbd> modules. To add it to your <a href='https://apt.izzysoft.de/packages/com.dergoogler.mmrl/'>MMRL</a> client, use this URL:<br> </p>
+<p class='center' style='margin-top:.5em;'><a href='https://apt.izzysoft.de/magisk'><code class='uncoloredlink' style='font-weight:bold;'>https://apt.izzysoft.de/magisk</code></a></p>
+<p class='center' style='margin-top:.5em; font-weight:bold;'>Note this repo is still in BETA stage, so there might be some glitches and not everything is working as planned yet! Further, other than with our F-Droid repo, there is no extensive scanning framework in place. Modules are taken in directly from their resp. developers.</p><p class='center'>Last updated: 2025-04-18 19:10 UTC</p>
+</div>
+
+<div class='filterline'>
+<form id='filterform' name='filterform' method='POST' action='/magisk/index.php'>
+  <input type='hidden' name='limit' value='10'>
+  <div class='filtercell'><b>Filter:  </b></div>
+  <div class='filtercell'>
+  <fieldset id='filter_cat'>
+    <legend>Category</legend>
+    <select id='cat' name='cat'><option value=''>- All -</option><option value='Internet'>Internet</option><option value='Multimedia'>Multimedia</option><option value='Phone &amp; SMS'>Phone &amp; SMS</option><option value='Security'>Security</option><option value='System'>System</option><option value='Theming'>Theming</option></select>
+  </fieldset>
+  <fieldset id='filter_license'>
+    <legend>License</legend>
+    <select id='license' name='license'><option value=''>- All -</option><option value='0BSD'>0BSD</option><option value='AGPL-3.0-only'>AGPL-3.0-only</option><option value='Apache-2.0'>Apache-2.0</option><option value='BSD-3-Clause'>BSD-3-Clause</option><option value='GPL-2.0-only'>GPL-2.0-only</option><option value='GPL-2.0-or-later'>GPL-2.0-or-later</option><option value='GPL-3.0'>GPL-3.0</option><option value='GPL-3.0-only'>GPL-3.0-only</option><option value='GPL-3.0-onnly'>GPL-3.0-onnly</option><option value='GPL-3.0-or-later'>GPL-3.0-or-later</option><option value='LGPL-2.1-only'>LGPL-2.1-only</option><option value='LGPL-3.0-only'>LGPL-3.0-only</option><option value='MIT'>MIT</option><option value='MPL-2.0'>MPL-2.0</option><option value='WTFPL'>WTFPL</option></select>
+  </fieldset>
+  <fieldset id='filter_anti'>
+    <legend>AntiFeatures</legend>
+    <select id='boolanti' name='boolanti'><option value=''>Whatever</option><option value='0'>No</option><option value='1'>Yes</option></select>
+  </fieldset>
+  <fieldset id='filter_added'>
+    <legend>Added since</legend>
+    <select id='radd' name='radd'><option value=''>- All -</option><option value='1'>1 day</option><option value='3'>3 days</option><option value='7'>1 week</option><option value='14'>2 weeks</option><option value='31'>1 month</option><option value='92'>3 months</option><option value='365'>1 year</option><option value='-1095'>3+ years</option></select>
+  </fieldset>
+  <fieldset id='filter_updated'>
+    <legend>Updated since</legend>
+    <select id='rup' name='rup'><option value=''>- All -</option><option value='1'>1 day</option><option value='3'>3 days</option><option value='7'>1 week</option><option value='14'>2 weeks</option><option value='31'>1 month</option><option value='92'>3 months</option><option value='365'>1 year</option><option value='-1095'>3+ years</option></select>
+  </fieldset>
+  <fieldset id='filter_built'>
+    <legend>LastBuild since</legend>
+    <select id='lbuild' name='lbuild'><option value=''>- All -</option><option value='1'>1 day</option><option value='3'>3 days</option><option value='7'>1 week</option><option value='14'>2 weeks</option><option value='31'>1 month</option><option value='92'>3 months</option><option value='365'>1 year</option><option value='-1095'>3+ years</option></select>
+  </fieldset>
+  <fieldset id='filter_search'>
+    <legend>Search for …</legend>
+    <input id='searchterm' name='searchterm' value=''>
+  </fieldset>
+  <fieldset id='filter_do'>
+    <legend>Do it!</legend>
+    <input type='submit' id='doFilter' name='doFilter' value='Go!'>
+  </fieldset>
+  <fieldset id='filter_clear'>
+    <legend>Clear</legend>
+    <a href='?clear'><img src='/shared/icons/clean_form.png' alt='clean' height='19' border='0'></a>
+  </fieldset>
+  </div>
+</form>
+</div>
+
+<div id='appcount' CLASS='minor-details'>128 modules found</div>
+
+<div class='repoapplist'>
+
+
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>40DPI NavBar AOSP</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v1.2 / 2024-07-05</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-2.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Reduces the size of the navigation bar to 36 DPI, maximizing the available screen space. Compatible with Android 8+, tested on AOSP ROMs.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/NavBar_Resize/v1.2_12.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/CrazyBytesVE/36-DPI-NavBar-Mod'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>A-GPS SUPL replacer</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v2.2.1 / 2023-03-15</span></div>
+        <div class='appdetailcell'><span class='minor-details'>BSD-3-Clause</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Replace the SUPL (Secure User-Plane Location) provider in Android's gps.conf.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/supl-replacer/v2.2.1_5.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/D3SOX/magisk-supl-replacer'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>A1Memory <span class='anti' title='NonFreeComp'>©</span></span></div>
+        <div class='appdetailcell'><span class='minor-details'>v4 (2023.11.26) / 2023-11-27</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-3.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Third-party memory management running on Android can reduce the running memory used by applications.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/Hc_memory/v4_2023.11.26_439.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/OneB1ank/A1Memory'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>Adaway - Ad Blocker</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v1.1 / 2025-01-11</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-3.0-onnly</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Will make the latest version of AdAway as a system app via systemless.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/adawayadblocker/v1.1_2.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/PS2ClassicsVault/AdAway-Ad-Blocker-Systemless-Magisk-Module'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>adb root</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v1.1 / 2023-04-17</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-3.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Enable adb root on production devices</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/adb_root/v1.1_11.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/tiann/adb_root'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>AdGuardDNS4Magisk-IPv6</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v2.7f / 2023-12-13</span></div>
+        <div class='appdetailcell'><span class='minor-details'>LGPL-3.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Using the "AdGuard DNS" DNS system-lessly! As simple as that and block ads and trackers.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/AdGuardDNS4Magisk-IPv6/v2.7f_27.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/Magisk-Modules-Alt-Repo/AdGuardDNS4Magisk-IPv6'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>Advanced Charging Controller (ACC)</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v2023.10.16 / 2023-10-16</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-3.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Extend your battery's service life by controlling charging current, temperature, and voltage. Any root solution is supported. The installation is always "systemless". Works on Android and KaiOS.</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/acc/v2023.10.16_202310160.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/VR-25/acc'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>AlterInstaller</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v2.0 / 2024-08-05</span></div>
+        <div class='appdetailcell'><span class='minor-details'>GPL-3.0-only</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Change PackageManager installer fields on boot</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/com.chiller3.alterinstaller/v2.0_131072.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/chenxiaolong/AlterInstaller'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>Anti bootloop</span></div>
+        <div class='appdetailcell'><span class='minor-details'>v1.3.4 / 2025-03-10</span></div>
+        <div class='appdetailcell'><span class='minor-details'>MIT</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Bootloop protection</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/abootloop/v1.3.4_8.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/Magisk-Modules-Alt-Repo/abootloop'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='approw'>
+  <div class='appiconbig'><img src='/shared/images/magisk_logo.png' alt='icon'></div>
+  <div class='appdetailblock'>
+    <div class='appdetailinner'>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'><span class='boldname'>app-data-file-exec</span></div>
+        <div class='appdetailcell'><span class='minor-details'>0.1.0 / 2021-05-15</span></div>
+        <div class='appdetailcell'><span class='minor-details'>MIT</span></div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell'>Allow execution of binaries in apps data folder</div>
+      </div>
+      <div class='appdetailrow'>
+        <div class='appdetailcell applinkcell'><center>
+
+          <a class='paddedlink' href='https://apt.izzysoft.de/magisk/modules/app-data-file-exec/0.1.0_1.zip'>Download</a>
+          <a class='paddedlink' href='https://github.com/galeksandrp/app-data-file-exec'>Source</a>
+        </center></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class='pager'>
+  <div class='pagerrow'>
+    <div class='pagercell left'><img src='templates/icons/first-grey.gif' alt='|«'>&nbsp;<img src='templates/icons/left-grey.gif' alt='«'></div>
+    <div class='pagercell middle'>Modules per page:&nbsp;10&nbsp;<a href='/magisk/index.php/list/page/1?limit=25'>25</a>&nbsp;<a href='/magisk/index.php/list/page/1?limit=50'>50</a>&nbsp;<a href='/magisk/index.php/list/page/1?limit=100'>100</a></div>
+    <div class='pagercell right'><a href='/magisk/index.php/list/page/2'><img src='templates/icons/right.gif' alt='»'></a>&nbsp;<a href='/magisk/index.php/list/page/13'><img src='templates/icons/last.gif' alt='»|'></a></div>
+  </div>
+</div>
+
+<div id='footer'>
+  <!--a href='https://liberapay.com/IzzyOnDroid' title='Support IzzyOnDroid via LiberaPay'>
+    <img src='/shared/images/liberapay-badge.png' alt='LiberaPay' height='24'-->
+  <a href='https://opencollective.com/izzyondroid' title='Support IzzyOnDroid via OpenCollective'>
+    <img src='/shared/images/opencollective_contribute_blue.png' class='highcontrast-themed' alt='OpenCollective' height='24'></a>
+  <br><a href='bitcoin:1K7i1VJYjRgjdVzaMfK2XRxLsyhjSFXPnC' title='Support IzzyOnDroid via Bitcoin'>
+    <img src='/shared/images/bitcoin.png' alt='Bitcoin' height='24'></a> <code class='uncoloredlink'>1K7i1VJYjRgjdVzaMfK2XRxLsyhjSFXPnC</code> <a style='background-color:initial;' href='/shared/images/bitcoin_qr_iod.png'><img class='themed' style='margin-left:.5em' src='/shared/images/bitcoin_qr_iod.png' width='24'></a>
+</div>
+
+</BODY></HTML>
